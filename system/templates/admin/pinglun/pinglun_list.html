@@ -1,0 +1,30 @@
+{include file="admin/header.html"}
+{nocache}
+<h1 class="xdcms_search_title">评论管理</h1>
+<div class="line"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_table">
+  <tr>
+    <th colspan="6" class="title"><div class="title_nav_1"><a href="index.php?m=pinglun&c=admin">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <th width="4%" class="tc">编号</th>
+    <th width="11%">评论标题</th>
+    <th width="17%">是否显示</th>
+    <th width="10%">操作</th>
+  </tr>
+{loop module="pinglun" order="id desc" pages="page"}
+<tr {if $r._index%2==0}class="bf"{/if}> 
+    <td class="tc">{$r.id}</td>
+    <td>{$r.title}</td>
+    <td>{if $r.is_lock==1}<a href="index.php?m=pinglun&c=admin&f=lock&id={$r.id}&lockid=0"><font color='#FF0000'>未审核</font></a>{else}<a href="index.php?m=pinglun&c=admin&f=lock&id={$r.id}&lockid=1">已审核</a>{/if}</td>
+    <td><a href="index.php?m=pinglun&c=admin&f=edit&id={$r.id}">编辑</a> | <a href="###" onclick="confirm('真的要删除此选项吗?','index.php?m=pinglun&c=admin&f=delete&id={$r.id}')">删除</a></td>
+</tr>
+{/loop}
+ <tr class="bf">
+    <td colspan="5" class="tc">{$pages}</td>
+ </tr>
+</table>
+{/nocache}
+<div class="xdcms_bottom"></div>
+</body>
+</html>

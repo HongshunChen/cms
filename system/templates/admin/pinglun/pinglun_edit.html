@@ -1,0 +1,33 @@
+{include file="admin/header.html"}
+<h1 class="xdcms_search_title">评论管理</h1>
+<div class="line"></div>
+<form name="addform" action="index.php?m=pinglun&c=admin&f=editsave" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="xdcms_add_table">
+  <tr>
+    <th colspan="7" class="title"><div class="title_nav_1"><a href="index.php?m=pinglun&c=admin">管理首页</a></div><span>|</span><div class="title_nav_2"><a href="javascript:location.reload()">刷新页面</a></div></th>
+  </tr>
+  <tr>
+    <td align="right">昵称：</td>
+    <td colspan="3"><input name="name" type="text" class="txt" id="name" value="{$rs['name']}" size="10"></td>
+  </tr>
+  <tr>
+    <td align="right">标题：</td>
+    <td colspan="3">{$rs['title']}</td>
+  </tr>
+  <tr>
+    <td align="right">评论内容：</td>
+    <td ><textarea name="content" cols="50" rows="5" id="content" style="margin:10px 0px 10px 0px; padding:5px;">{$rs['content']}</textarea></td>
+  </tr>
+  <tr>
+    <td align="right">评论时间：</td>
+    <td colspan="3">{$rs.inputtime|date_format:'%Y-%m-%d %H:%M:%S'}</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="确认修改" class="submit" /><input name="id" type="hidden" id="id" value="{$rs['id']}" /></td>
+  </tr>
+</table>
+</form>
+<div class="xdcms_bottom"></div>
+</body>
+</html>

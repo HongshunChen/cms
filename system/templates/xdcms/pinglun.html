@@ -1,0 +1,42 @@
+  {loop sql="select * from {$pre}pinglun where parentid = {$rs.contentid} and is_lock = '0' order by id desc" pages="page"}
+  <table width="90%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #CCC; margin-top:5px;">
+    <tr>
+      <td width="18%">昵称：{$r.name}</td>
+      <td width="82%">标题：{$r.title}</td>
+    </tr>
+	<tr>
+      <td colspan="2">{$r.content}</td>
+    </tr>
+  </table>
+  {/loop}
+{if $r.id != ""} 
+    <table width="90%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>{$pages}</td>
+      </tr>
+  </table>
+{/if}
+<form name="pinglun" method="post" action="index.php?m=pinglun&c=index&f=add&contentid={$rs.contentid}">
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="10%" height="40" align="left">昵称：</td>
+      <td width="90%"><label>
+        <input name="name" type="text" id="name" value="匿名" size="15" maxlength="20">
+      </label></td>
+    </tr>
+    <tr>
+      <td height="35" align="left">评论内容：</td>
+      <td><label>
+        <textarea name="content" cols="40" rows="5" id="content"></textarea>
+      </label></td>
+    </tr>
+    <tr>
+      <td height="35">&nbsp;</td>
+      <td><label>
+        <input name="title" type="hidden" id="title" value="【{$cat['catname']}】{$rs.title}">
+		
+        <input type="submit" name="Submit" value="提 交">
+      </label></td>
+    </tr>
+  </table>
+</form>

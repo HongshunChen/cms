@@ -1,0 +1,4 @@
+
+ 一、把pinglun.html 复制到你的模板文件夹中
+ 二、在 show_xxx.html 内容模板 在合适的位置添加{include file="xdcms/pinglun.html"}
+ 
