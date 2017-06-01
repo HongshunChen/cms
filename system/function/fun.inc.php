@@ -397,10 +397,10 @@ function get_array($name,$field,$value,$show=0){
 		}
   
 	}  
-	for($row = 0;$row <sizeof($new);$row++){  
-		$array[]=$new[$row];
-	} 
-	return $array;
+//	for($row = 0;$row <sizeof($new);$row++){  
+//		$array[]=$new[$row];
+//	} 
+	return $new;
 }
 
 function get_category_array($name,$field,$value,$show=0,$lang){
