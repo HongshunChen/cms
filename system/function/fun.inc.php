@@ -417,10 +417,10 @@ function get_category_array($name,$field,$value,$show=0,$lang){
 			}
 		}
 	}  
-	for($row = 0;$row <sizeof($new);$row++){  
-		$array[]=$new[$row];
-	} 
-	return $array;
+//	for($row = 0;$row <sizeof($new);$row++){  
+//		$array[]=$new[$row];
+//	} 
+	return $new;
 }
 
 //判断栏目是否有父栏目并返回ID   tid形式如：,1,2,3
