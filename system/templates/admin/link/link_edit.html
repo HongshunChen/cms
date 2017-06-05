@@ -11,6 +11,15 @@
     <td colspan="3"><input type="text" name="title" class="txt" size="30" value="{$rs['title']}"></td>
   </tr>
   <tr>
+  <td align="right">链接类型：</td>
+      <td ><select  name="typeid">
+              {loop sql="select * from {$pre}link_type order by id asc " }
+              <option value="{$r.id}" {if $rs['typeid']==$r.id} "selected" {/if}>{$r.title}</option>
+              {/loop}
+          </select> 
+      </td>
+  </tr>
+  <tr>
     <td align="right">链接地址：</td>
     <td colspan="3"><input type="text" name="url" class="txt" size="30" value="{$rs['url']}"></td>
   </tr>

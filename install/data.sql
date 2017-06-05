@@ -2,7 +2,7 @@
 # 91736.com
 # Version: 
 # Time: 2011-12-01 07:02
-# 91736: http://www.91736.com
+# 91736: http://www.baidu.com
 # --------------------------------------------------------
 
 
@@ -175,8 +175,18 @@ CREATE TABLE `c_language` (
 DROP TABLE IF EXISTS `c_link`;
 CREATE TABLE `c_link` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `title` char(20) NOT NULL,
+  `typeid` tinyint(3) unsigned NOT NULL,
+  `title` varchar(20) NOT NULL,
   `url` char(80) NOT NULL,
+  `is_lock` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `c_link_type`;
+CREATE TABLE `c_link_type` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) NOT NULL,
   `is_lock` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `inputtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -459,9 +469,9 @@ INSERT INTO `c_config` VALUES('4', 'array (
 )', 'upload');
 
 INSERT INTO `c_flash` (`id`, `title`, `typeid`, `url`, `thumb`, `is_lock`, `inputtime`) VALUES
-(1, '首页幻灯图片', 1, 'http://www.91736.com', 'uploadfile/image/20111123/20111123030811.jpg', 0, 1322017704),
-(2, '首页幻灯图片', 1, 'http://www.91736.com', 'uploadfile/image/20111123/20111123031219.jpg', 0, 1322017941),
-(3, '首页幻灯图片', 1, 'http://www.91736.com', 'uploadfile/image/20111123/20111123031235.jpg', 0, 1322017956);
+(1, '首页幻灯图片', 1, 'http://www.baidu.com', 'uploadfile/image/20111123/20111123030811.jpg', 0, 1322017704),
+(2, '首页幻灯图片', 1, 'http://www.baidu.com', 'uploadfile/image/20111123/20111123031219.jpg', 0, 1322017941),
+(3, '首页幻灯图片', 1, 'http://www.baidu.com', 'uploadfile/image/20111123/20111123031235.jpg', 0, 1322017956);
 
 INSERT INTO `c_flash_type` (`id`, `name`) VALUES
 (1, '首页幻灯');
@@ -562,6 +572,9 @@ INSERT INTO `c_menu` VALUES('73', '71', '添加版本', 'index.php?m=xdcms&c=lan
 INSERT INTO `c_menu` VALUES('74', '6', 'URL规则管理', '###', '0', '1', '');
 INSERT INTO `c_menu` VALUES('75', '74', '添加规则', 'index.php?m=xdcms&c=urlrule&f=add', '0', '1', '');
 INSERT INTO `c_menu` VALUES('76', '74', '规则管理', 'index.php?m=xdcms&c=urlrule', '0', '1', '');
+
+INSERT INTO `c_link` VALUES ('1', '1', '全部', 'http://www.baidu.com', '0', '1496474485');
+INSERT INTO `c_link_type` VALUES ('1', '全部', '0', '1496474417');
 
 INSERT INTO `c_model` (`id`, `model_name`, `model_table`, `is_lock`, `is_fixed`) VALUES
 (1, '单页模型', 'single', 1, 1),

@@ -4,8 +4,16 @@ class install extends Checklogin{
 	public function init(){
 		$this->mysql->query("CREATE TABLE IF NOT EXISTS `".DB_PRE."link` (
   `id` int(8) unsigned NOT NULL auto_increment,
-  `title` char(20) NOT NULL,
+  `typeid` tinyint unsigned NOT NULL ,
+  `title` varchar(20) NOT NULL,
   `url` char(80) NOT NULL,
+  `is_lock` tinyint(1) unsigned NOT NULL default '0',
+  `inputtime` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
+                $this->mysql->query("CREATE TABLE IF NOT EXISTS `".DB_PRE."link_type` (
+  `id` int(8) unsigned NOT NULL auto_increment,
+  `title` varchar(20) NOT NULL,
   `is_lock` tinyint(1) unsigned NOT NULL default '0',
   `inputtime` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -13,6 +21,8 @@ class install extends Checklogin{
 
 		$this->mysql->db_insert("menu","`parentid`=4,`title`='友情链接管理',`url`='###',`sort`=0,`is_show`=1");
 		$pid=$this->mysql->insert_id();
+                $this->mysql->db_insert("menu","`parentid`=".$pid.",`title`='添加链接类型',`url`='index.php?m=link&c=linktype&f=add',`sort`=0,`is_show`=1");
+		$this->mysql->db_insert("menu","`parentid`=".$pid.",`title`='管理链接类型',`url`='index.php?m=link&c=linktype',`sort`=0,`is_show`=1");
 		$this->mysql->db_insert("menu","`parentid`=".$pid.",`title`='添加链接',`url`='index.php?m=link&c=admin&f=add',`sort`=0,`is_show`=1");
 		$this->mysql->db_insert("menu","`parentid`=".$pid.",`title`='管理链接',`url`='index.php?m=link&c=admin',`sort`=0,`is_show`=1");
 		
@@ -24,7 +34,10 @@ class install extends Checklogin{
 	
 	public function uninstall(){
 		$this->mysql->del_table("link");  //删除数据表
+                $this->mysql->del_table("link_type");  //删除数据表
 		$this->mysql->db_delete("menu","`title`='友情链接管理'");
+                $this->mysql->db_delete("menu","`title`='添加链接类型'");
+		$this->mysql->db_delete("menu","`title`='管理链接类型'");
 		$this->mysql->db_delete("menu","`title`='添加链接'");
 		$this->mysql->db_delete("menu","`title`='管理链接'");
 		
