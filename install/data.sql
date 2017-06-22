@@ -572,7 +572,8 @@ INSERT INTO `c_menu` VALUES('73', '71', '添加版本', 'index.php?m=xdcms&c=lan
 INSERT INTO `c_menu` VALUES('74', '6', 'URL规则管理', '###', '0', '1', '');
 INSERT INTO `c_menu` VALUES('75', '74', '添加规则', 'index.php?m=xdcms&c=urlrule&f=add', '0', '1', '');
 INSERT INTO `c_menu` VALUES('76', '74', '规则管理', 'index.php?m=xdcms&c=urlrule', '0', '1', '');
-
+INSERT INTO `c_menu` VALUES('77', '43', '添加链接类型', 'index.php?m=link&c=linktype&f=add', '0', '1', '');
+INSERT INTO `c_menu` VALUES('50', '43', '管理链接类型', 'index.php?m=link&c=linktype', '0', '1', '');
 INSERT INTO `c_link` VALUES ('1', '1', '全部', 'http://www.baidu.com', '0', '1496474485');
 INSERT INTO `c_link_type` VALUES ('1', '全部', '0', '1496474417');
 

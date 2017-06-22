@@ -579,7 +579,8 @@ function thumb($f,$w,$h){
 		if($image[0]<=$w){
 			$file=$f;
 		}else{
-			$filename=array_pop(explode("/",$f));
+			$param=explode("/",$f);
+			$filename=array_pop($param);
 			$filepath=str_replace($filename,"",$f);
 			$filename=explode(".",$filename);
 			$file=$filepath."thumb_".$filename[0]."_".$w."_".$h.".".$filename[1];

@@ -98,7 +98,9 @@ class index extends db{
 		//取出左侧最高级栏目
 		$parent=is_parent($catid);
 		if(!empty($parent)){
-			$last_id=array_pop(explode(",",ltrim($parent,",")));  //栏目ID
+                        $param=explode(",",ltrim($parent,","));
+			$last_id=array_pop($param);  //栏目ID
+			
 			$left_title=catname($last_id);   //栏目名称
 			$parentid=$last_id;   //赋值给父类ID
 		}else{
