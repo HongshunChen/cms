@@ -5508,7 +5508,7 @@ _plugin('core', function(K) {
 				overflow : 'hidden',
 				left : '-1981px',
 				top : K(bookmark.start).pos().y + 'px',
-				'white-space' : 'nowrap'
+				//'white-space' : 'nowrap'
 			});
 			K(doc.body).append(div);
 			if (_IE) {
