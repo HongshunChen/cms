@@ -43,7 +43,7 @@ class index extends db{
 		if(empty($contentid)){
 			$contentid=intval(safe_html($_GET['id']));
 		}
-		
+		$lang=intval($_GET['l']);
 		$array=get_category($catid);
 		$name=str_replace('.html','',$array['template_show']);
 		$model=modelname($catid);
@@ -76,12 +76,26 @@ class index extends db{
 		$previous_rs=$this->mysql->get_one("select * from ".DB_PRE.$model." where `catid`='".$catid."' and `id` < ".$contentid." order by id desc");
 		$next_rs=$this->mysql->get_one("select * from ".DB_PRE.$model." where `catid`='".$catid."' and `id` > ".$contentid." order by id asc");
 		if($previous_rs){
-			$previous="<a href=\"".$previous_rs['url']."\">".$previous_rs['title']."</a>";
+                        if($lang==2){
+                            $url="index.php?m=content&c=index&f=show&catid={$catid}&l={$lang}&id={$previous_rs['id']}";
+                            $previous="<a href=\"".$url."\">".$previous_rs['title']."</a>"; 
+                        }else{
+                           $previous="<a href=\"".$previnous_rs['url']."\">".$previous_rs['title']."</a>"; 
+                        }
+                            
+			
 		}else{
 			$previous="没有了";
 		}
 		if($next_rs){
-			$next="<a href=\"".$next_rs['url']."\">".$next_rs['title']."</a>";
+                        if($lang==2){
+                             $url="index.php?m=content&c=index&f=show&catid={$catid}&l={$lang}&id={$next_rs['id']}";
+                             $next="<a href=\"".$url."\">".$next_rs['title']."</a>"; 
+                            
+                        }else{
+                             $next="<a href=\"".$next_rs['url']."\">".$next_rs['title']."</a>"; 
+                        }
+			
 		}else{
 			$next="没有了";
 		}
