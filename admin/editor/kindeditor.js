@@ -892,11 +892,13 @@ function _mediaAttrs(srcTag) {
 	return _getAttrList(unescape(srcTag));
 }
 function _mediaEmbed(attrs) {
-	var html = '<embed ';
-	_each(attrs, function(key, val) {
-		html += key + '="' + val + '" ';
-	});
-	html += '/>';
+//	var html = '<embed ';
+//	_each(attrs, function(key, val) {
+//		html += key + '="' + val + '" ';
+//	});
+//	html += '/>';
+ var html=' <video controls="controls" autoplay="autoplay" poster="screen.jpg" onplay="ture" width="'+attrs.width+'" height="'+attrs.height+'" onclick="if(/Android/.test(navigator.userAgent))this.play();"> <source src="';
+     html+=attrs.src+' " type="video/mp4"></video>';
 	return html;
 }
 function _mediaImg(blankPath, attrs) {
