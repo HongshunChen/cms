@@ -42,7 +42,9 @@ KindEditor.plugin('insertfile', function(K) {
 				name : self.lang('yes'),
 				click : function(e) {
 					var url = K.trim(urlBox.val()),
+                                                
 						title = titleBox.val();
+                                        var ext=url.substr(url.lastIndexOf(".")+1)
 					if (url == 'http://' || K.invalidUrl(url)) {
 						alert(self.lang('invalidUrl'));
 						urlBox[0].focus();
@@ -51,7 +53,13 @@ KindEditor.plugin('insertfile', function(K) {
 					if (K.trim(title) === '') {
 						title = url;
 					}
-					var html = '<a href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
+                                        if(ext=='pdf'){
+                                            var html=' <iframe src="'+url+'"  style="width:925px;height:900px;border:none;"></iframe>'+'<a href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
+                                            
+                                        }else{
+                                            var html = '<a href="' + url + '" data-ke-src="' + url + '" target="_blank">' + title + '</a>';
+                                        }
+					
 					self.insertHtml(html);
 					uploadbutton.remove();
 					self.hideDialog().focus();
