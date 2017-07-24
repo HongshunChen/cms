@@ -37,7 +37,7 @@ function smarty_modifier_truncate_cn($string, $length = 80, $etc = '', $code = '
     preg_match_all($pa, $string, $t_string);
     if (count($t_string[0]) > $length)
         return join('', array_slice($t_string[0], 0, $length)) . $etc;
-    return join('', array_slice($t_string[0], 0, $length)) . $etc;
+    return join('', array_slice($t_string[0], 0, $length));
 }
 
 /* vim: set expandtab: */
