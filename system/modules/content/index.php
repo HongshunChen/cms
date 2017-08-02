@@ -71,7 +71,16 @@ class index extends db{
 			}
 		}
 		//end
-		
+                //针对手机端外链直接跳转
+		if($lang==2){
+                            $temp="index.php?m=content&c=index&f=show";
+                            $be= strpos($rs['url'], $temp);
+                            if($be===false){
+                             
+                                header('location: '.$rs['url']);
+                                exit;
+                            }
+                }
 		//上一页 下一页
 		$previous_rs=$this->mysql->get_one("select * from ".DB_PRE.$model." where `catid`='".$catid."' and `id` < ".$contentid." order by id desc");
 		$next_rs=$this->mysql->get_one("select * from ".DB_PRE.$model." where `catid`='".$catid."' and `id` > ".$contentid." order by id asc");
