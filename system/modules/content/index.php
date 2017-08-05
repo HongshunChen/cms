@@ -168,24 +168,27 @@ class index extends db{
 		if(empty($key)){
 			showmsg(C('error'),'-1');
 		}
-		$array=get_category($catid);
+		//$array=get_category($catid);
 		
-		$this->left($catid);
+		//$this->left($catid);
 		
 		//搜索条件
-		$where="where url != '' ";
-		if($catid){
-			$categoryid=$catid.get_all_catids($catid);
-			$where .= " and catid in(".$categoryid.")";
-		}
+		//$where="where url != '' ";
+                $where="where url != '' ";
+//		if($catid){
+//			$categoryid=$catid.get_all_catids($catid);
+//			$where .= " and catid in(".$categoryid.")";
+//		}
 		if($key){
 			$where .= " and (title like '%".$key."%' or keywords like '%".$key."%' or description like '%".$key."%')";
 		}
-		assign("where",$where);
-		//end
 		
-		assign("key",$key);
-		assign("model",$model);
+                $array['catename']='搜索';
+                assign("where",$where);
+		//end
+		assign("left_title",'搜索详情');
+//		assign("key",$key);
+//		assign("model",$model);
 		assign('cat',$array);  //加载栏目数组
 		template($dir."search");
 	}
