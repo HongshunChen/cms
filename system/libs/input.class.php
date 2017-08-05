@@ -51,7 +51,7 @@ $str="<script>KindEditor.ready(function(K) {
 	
 	//图片上传	
 	public function image($f_name,$f_value,$f_width,$f_height,$f_option){
-		$str="<input type=\"text\" name=\"fields[{$f_name}]\" id=\"fields[{$f_name}]\" class=\"txt\" size=\"25\" value=\"".html_decode($f_value)."\"> <a href=\"#\" onclick=\"javascript:ShowIframe('400','115','上传图片','system/function/upload.inc.php?filename=fields[{$f_name}]')\">上 传</a>";
+		$str="<input type=\"text\" name=\"fields[{$f_name}]\" id=\"fields[{$f_name}]\" class=\"txt\" size=\"25\" value=\"".html_decode($f_value)."\"> <a  onclick=\"javascript:ShowIframe('400','115','上传图片','system/function/upload.inc.php?filename=fields[{$f_name}]')\">上 传</a>";
 		return $str;
 	}
 	
@@ -108,7 +108,7 @@ $str="<script>KindEditor.ready(function(K) {
 	
 	//附件上传	
 	public function files($f_name,$f_value,$f_width,$f_height,$f_option){
-		$str="<input type=\"text\" name=\"fields[{$f_name}]\" id=\"fields[{$f_name}]\" class=\"txt\" size=\"25\" value=\"".html_decode($f_value)."\"> <a href=\"#\" onclick=\"javascript:ShowIframe('400','115','上传文件!','system/function/upload.inc.php?type=1&filename=fields[{$f_name}]')\">上 传</a>";
+		$str="<input type=\"text\" name=\"fields[{$f_name}]\" id=\"fields[{$f_name}]\" class=\"txt\" size=\"25\" value=\"".html_decode($f_value)."\"> <a  onclick=\"javascript:ShowIframe('400','115','上传文件!','system/function/upload.inc.php?type=1&filename=fields[{$f_name}]')\">上 传</a>";
 		return $str;
 	}
 	

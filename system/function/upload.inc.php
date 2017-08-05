@@ -26,11 +26,11 @@ if($_upload['isopen']!=1){
 //判断上传是文件还是图片
 $type=isset($_GET['type'])?(int)$_GET['type']:0;
 if($type==1){
-	$size=$_upload['filesize']*1000;
+	$size=$_upload['filesize']*1024;
 	$folder='file';
 	$allowed=explode(",",$_upload['fileallowed']);
 }else{
-	$size=$_upload['imagesize']*1000;
+	$size=$_upload['imagesize']*1024;
 	$folder='image';
 	$allowed=explode(",",$_upload['imageallowed']);
 }
@@ -73,7 +73,7 @@ if (isset($_GET["action"])){
 				 exit();
         }
      }
-	echo("<script>window.top.main.document.getElementById('{$filename}').value='{$upload->saved_upload_name1}'</script>");
+	echo("<script>window.top.document.getElementById('{$filename}').value='{$upload->saved_upload_name1}'</script>");
 	echo("<center>上传成功</center>");
 	exit;
 }
