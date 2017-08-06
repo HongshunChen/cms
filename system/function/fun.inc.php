@@ -55,6 +55,46 @@ function safe_html($str){
 	return htmlspecialchars($str);
 }
 
+ /**
+     * 描述 : 数据封装
+     * 注明 :
+     *      错误码如下 :
+     *          1000 : 请求功能无效
+     *          1001 : 响应数据错误
+     *          1002 : 请求校验失败
+     *          2000 : 用户未登入
+     *          201x : 用户登入时发生的错误,x值具体信息如下 :
+     *              0 = 缺少账户密码,
+     *              2 = 账户密码错误,
+     *              3 = 需要验证码,
+     *              4 = 一户一地登入时,其他人已登入,
+     *              5 = 登入人数过多
+     * 作者 :DOIT
+     */
+    function dataPackage($code)
+    {
+        ($code === null || $code === false) && $code = 1001;
+
+        if (is_int($code)) {
+            //封装错误
+            $result = array(
+                'status' => 'error',
+                'data' => array(
+                    'code' => &$code,
+                ),
+            );
+            //$code < 2000 && trigger_error('A api error has been triggered : ' . $code); //请求错误
+        } else {
+            //封装成功
+            $result = array(
+                'status' => 'done',
+                'data' => &$code,
+            );
+        }
+
+        echo json_encode($result);
+    }
+
 //提示信息内容
 function C($clue){
 	global $CLUE;
@@ -62,7 +102,7 @@ function C($clue){
 }
 
 //提示信息对话框
-function showmsg($msg,$gourl,$onlymsg=0,$limittime=0){
+function showmsg($msg,$gourl,$onlymsg=0,$limittime=3000){
 	$htmlhead  = "<html>\r\n<head>\r\n<title>提示信息</title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n";
 	$htmlhead .= "<base target='_self'/>\r\n<style>";
 	$htmlhead .= "*{font-size:12px;color:#2B61BA;}\r\n";

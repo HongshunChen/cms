@@ -1,9 +1,9 @@
 <?php
+/* 接口类 : 1.需要以api命名 2.方法的数据返回用return */
 class api extends db{	
 	
-	public function init($lang=''){
-		$dir=$this->check_lang($lang);
-		template($dir."index");
+	public function init(){
+		return 1000;
 	}
         public function getWiningInfo(){
                $phone=isset($_GET['phone']) ? safe_html($_GET['phone']):'';
@@ -21,8 +21,7 @@ class api extends db{
               
                $res=$this->mysql->fetch_asc_deal($sql);
               //$res= $this->mysql->get_one($sql);
-               echo json_encode($res);
+               return $res;
         }
 	
 }
-?>

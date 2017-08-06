@@ -18,10 +18,9 @@ $page=isset($_GET['page'])?(int)$_GET['page']:0;
 $page=$page==0?1:$page;
 
 //接收参数
-$m=safe_replace(safe_html(isset($_GET["m"]))) ? safe_replace(safe_html($_GET["m"])) : "content";
-$c=safe_replace(safe_html(isset($_GET["c"]))) ? safe_replace(safe_html($_GET["c"])) : "index";
-$f=safe_replace(safe_html(isset($_GET["f"]))) ? safe_replace(safe_html($_GET["f"])) : "init";
-
+$m=isset($_GET["m"]) ? safe_replace(safe_html($_GET["m"])) : "content";
+$c=isset($_GET["c"]) ? safe_replace(safe_html($_GET["c"])) : "index";
+$f=isset($_GET["f"]) ? safe_replace(safe_html($_GET["f"])) : "init";
 //判断模块是否存在
 if(!file_exists(MOD_PATH.$m)){
 	showmsg(C('module_not_exist'),'/');
@@ -38,7 +37,13 @@ include MOD_PATH.$m."/".$c.".php";   //调用类
 if(!class_exists($c)){
 	showmsg(C('class_not_exist'),'/');
 }
-
 $p=new $c();  //实例化
-$p->$f();   //调用方法
-?>
+if($c==='api'){
+    $data=$p->$f();   //调用方法
+    dataPackage($data);
+}else{
+    $p->$f();   //调用方法
+}
+
+
+

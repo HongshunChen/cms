@@ -51,7 +51,7 @@ class db{
 	}
 	
 	function __call($classname, $arguments){
-		echo "Calling object method $classname";
+		return "Calling object method $classname";
 	}
 	
 	public function check_lang($lang=''){
