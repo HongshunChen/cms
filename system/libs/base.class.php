@@ -61,6 +61,11 @@ class db{
 		}else{
 			$language=isset($_GET['l'])?(int)$_GET['l']:1;
 		}
+		$agent = $_SERVER['HTTP_USER_AGENT'];
+                if (strpos($agent, "comFront") || strpos($agent, "iPhone") || strpos($agent, "MIDP-2.0") || strpos($agent, "Opera Mini") || strpos($agent, "UCWEB") || strpos($agent, "Android") || strpos($agent, "Windows CE") || strpos($agent, "SymbianOS")) {
+                  //默认版本2为手机版
+                  $language=2;
+                } 
 		$lang_arr=get_lang($language);
 		
 		//加载语言包
