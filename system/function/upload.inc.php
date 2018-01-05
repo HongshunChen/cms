@@ -73,7 +73,7 @@ if (isset($_GET["action"])){
 				 exit();
         }
      }
-	echo("<script>window.top.document.getElementById('{$filename}').value='{$upload->saved_upload_name1}'</script>");
+	echo("<script>window.top.main.document.getElementById('{$filename}').value='{$upload->saved_upload_name1}'</script>");
 	echo("<center>上传成功</center>");
 	exit;
 }
