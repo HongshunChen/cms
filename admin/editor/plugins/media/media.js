@@ -59,7 +59,7 @@ KindEditor.plugin('media', function(K) {
 							urlBox[0].focus();
 							return;
 						}
-						if (!/^\d*$/.test(width)) {
+						/*if (!/^\d*$/.test(width)) {
 							alert(self.lang('invalidWidth'));
 							widthBox[0].focus();
 							return;
@@ -68,7 +68,7 @@ KindEditor.plugin('media', function(K) {
 							alert(self.lang('invalidHeight'));
 							heightBox[0].focus();
 							return;
-						}
+						}*/
 						var html = K.mediaImg(self.themesPath + 'common/blank.gif', {
 								src : url,
 								type : K.mediaType(url),
