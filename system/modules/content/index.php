@@ -89,7 +89,7 @@ class index extends db{
                             $url="index.php?m=content&c=index&f=show&catid={$catid}&l={$lang}&id={$previous_rs['id']}";
                             $previous="<a href=\"".$url."\">".$previous_rs['title']."</a>"; 
                         }else{
-                           $previous="<a href=\"".$previnous_rs['url']."\">".$previous_rs['title']."</a>"; 
+                           $previous="<a href=\"".$previous_rs['url']."\">".$previous_rs['title']."</a>"; 
                         }
                             
 			
