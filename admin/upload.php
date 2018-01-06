@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'json.php';
+require_once './../cache/cache_sys/cache_set_upload.php';
 if(empty($_SESSION['admin'])){
 	echo'not administrator';
 	exit;
@@ -22,7 +23,7 @@ $ext_arr = array(
 	'file' => array('doc', 'docx', 'xls', 'xlsx', 'ppt', 'htm', 'html', 'txt', 'zip', 'rar', 'gz', 'bz2','pdf'),
 );
 //最大文件大小
-$max_size = 1000000;
+$max_size = $_upload['filesize'];
 
 $save_path = realpath($save_path) . '/';
 
