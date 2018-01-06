@@ -96,7 +96,7 @@ KindEditor.plugin('image', function(K) {
 						urlBox[0].focus();
 						return;
 					}
-					if (!/^\d*$/.test(width)) {
+					/*if (!/^\d*$/.test(width)) {
 						alert(self.lang('invalidWidth'));
 						widthBox[0].focus();
 						return;
@@ -105,7 +105,7 @@ KindEditor.plugin('image', function(K) {
 						alert(self.lang('invalidHeight'));
 						heightBox[0].focus();
 						return;
-					}
+					}*/
 					clickFn.call(self, url, title, width, height, 0, align);
 				}
 			},
