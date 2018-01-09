@@ -19,15 +19,16 @@ class admin extends Checklogin{
 		template('link_edit','admin/link');
 	}
 	
-	public function editsave(){
+         public function editsave(){
 		$id=isset($_POST['id'])?intval($_POST['id']):0;
 		$title=safe_html($_POST['title']);
                 $typeid=isset($_POST['typeid'])?intval($_POST['typeid']):0;
 		$url=safe_html($_POST['url']);
+                $thumb=safe_html($_POST['thumb']);
 		if(empty($title)||empty($url)||empty($id)){
 			showmsg(C('material_not_complete'),'-1');
 		}
-		$this->mysql->db_update('link',"`title`='".$title."',`typeid`={$typeid},`url`='".$url."'",'`id`='.$id);
+		$this->mysql->db_update('link',"`title`='".$title."',`typeid`={$typeid},`thumb`='".$thumb."',`url`='".$url."'",'`id`='.$id);
 		showmsg(C('update_success'),'-1');
 	}
 	
@@ -39,11 +40,11 @@ class admin extends Checklogin{
 		$title=safe_html($_POST['title']);
                 $typeid=isset($_POST['typeid'])?intval($_POST['typeid']):0;
 		$url=safe_html($_POST['url']);
-             
+                $thumb=safe_html($_POST['thumb']);
 		if(empty($title)||empty($url)||empty($typeid)){
 			showmsg(C('material_not_complete'),'-1');
 		}
-		$this->mysql->db_insert('link',"`title`='".$title."',`url`='".$url."',`typeid`={$typeid},`inputtime`='".datetime()."',`is_lock`=0");
+		$this->mysql->db_insert('link',"`title`='".$title."',`thumb`='".$thumb."',`url`='".$url."',`typeid`={$typeid},`inputtime`='".datetime()."',`is_lock`=0");
 		showmsg(C('add_success'),'index.php?m=link&c=admin');
 	}
 	

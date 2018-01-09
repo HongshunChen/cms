@@ -6,6 +6,7 @@ class install extends Checklogin{
   `id` int(8) unsigned NOT NULL auto_increment,
   `typeid` tinyint unsigned NOT NULL ,
   `title` varchar(20) NOT NULL,
+  `thumb` varchar(100) NOT NULL,
   `url` char(80) NOT NULL,
   `is_lock` tinyint(1) unsigned NOT NULL default '0',
   `inputtime` int(10) unsigned NOT NULL default '0',
